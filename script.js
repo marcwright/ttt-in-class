@@ -1,12 +1,17 @@
 const moves = new Array(9)
-// ["X","","","","","","","","O"]
-console.log(moves)
+
 const squares = document.querySelectorAll('#board > div')
+let turnCount = 0
+let turn = 'X'
 
 squares.forEach((square, index) => {
     square.addEventListener('click', (event)=> {
-        console.log(event.target, index)
-        event.target.innerText = "X"
+        moves[index] = turn
+        console.log(moves)
+        event.target.innerText = turn
+
+        turn = (turnCount % 2 === 0) ? "O" : "X";
+
+        turnCount++
     }, {once: true})
 })
-
