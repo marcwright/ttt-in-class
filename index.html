@@ -6,11 +6,15 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>TTT</title>
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
         <div id="container">
-            <div id="board">
+            <div id="board" class="animate__animated animate__backInDown">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -21,6 +25,7 @@
                 <div></div>
                 <div></div>
             </div>
+            <div class="win-message"></div>
         </div>
         <script src="./script.js"></script>
     </body>

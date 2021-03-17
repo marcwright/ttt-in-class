@@ -1,25 +1,34 @@
 const moves = new Array(9)
 
 const squares = document.querySelectorAll('#board > div')
+const winMessageDiv = document.querySelector('.win-message')
+const board = document.querySelector('#board')
 let turnCount = 0
 let turn = 'X'
 
 function checkForWin() {
     if (moves[0] === moves[1] && moves[1] === moves[2]) {
         removeClickEventCallback()
-        alert('winner in the first row ' + turn)
+        squares[0].classList.add('blink')
+        squares[1].classList.add('blink')
+        squares[2].classList.add('blink')
+
+        winMessageDiv.innerHTML = `winner in the first row ${turn}`;
     } else {
         console.log('no winner yet')
     }
 }
 
 function removeClickEventCallback() {
-    squares.forEach(square =>
+    // board.classList.remove('rotate')
+    squares.forEach(square => {
+        (square.innerText !== turn) ? square.innerText = '' : square.classList.add('blink')
         square.removeEventListener('click', handleClickEventCallback)
-    )
+    })
 }
 
 function handleClickEventCallback(event) {
+    if (turnCount < 1) {board.classList.add('rotate')}
     moves[event.target.id] = turn
     checkForWin()
     event.target.innerText = turn
